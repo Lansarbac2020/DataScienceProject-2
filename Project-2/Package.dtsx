@@ -11,8 +11,8 @@
   DTS:LocaleID="1055"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{B3F524D1-520E-4CE4-A8AE-FE8D6714B4C9}">
+  DTS:VersionBuild="77"
+  DTS:VersionGUID="{B47EB305-BAE0-423C-89F3-9ABC197FCA2D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -40,7 +40,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="BankaAd"
-              DTS:DTSID="{F7B2ACA2-385D-45F3-A93F-86625560F377}"
+              DTS:DTSID="{9A97E12A-878D-4510-819F-6FFF0A7A285A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="DovizID"
-              DTS:DTSID="{6A0581CE-5DDF-40A2-BEA5-CDFE3D6EACD8}"
+              DTS:DTSID="{5CA1CE2C-0902-4C70-A742-B0EFE37FB867}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -57,7 +57,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="OrtalamaHesapYas"
-              DTS:DTSID="{8B255BEA-9B7D-42B1-BDC7-4B7DD037711E}"
+              DTS:DTSID="{CEE8CC9B-0C94-4EF0-802A-1567C1A76EE3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -65,7 +65,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="AktifHesapSayisi"
-              DTS:DTSID="{82933291-5C50-48B9-AFF6-8E5178701983}"
+              DTS:DTSID="{5CCED7C1-6011-49EB-93D5-0E6DA84E0E6B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -73,7 +73,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="ToplamBakiye"
-              DTS:DTSID="{EDFA5046-49EB-477E-80A7-A6E7A897F1C0}"
+              DTS:DTSID="{D6CCEAB6-53D4-4E79-85F7-C818AFB7EAE9}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -131,8 +131,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="BolgeID">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataType="17">1</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -141,7 +140,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="BolgeKlasor">
       <DTS:VariableValue
-        DTS:DataType="8">D:\ISE311P02020\BolgeAd</DTS:VariableValue>
+        DTS:DataType="8">D:\ISE311P02020\BolgeKlasor</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -178,7 +177,8 @@
       DTS:Namespace="User"
       DTS:ObjectName="SehirAd">
       <DTS:VariableValue
-        DTS:DataType="8">""</DTS:VariableValue>
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -187,7 +187,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="SehirKlasor">
       <DTS:VariableValue
-        DTS:DataType="8">D:\ISE311P02020\BolgeAd\SehirKlasor</DTS:VariableValue>
+        DTS:DataType="8">D:\ISE311P02020\BolgeKlasor\SehirKlasor</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -1155,24 +1155,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
                           dataType="System.String"
                           description="The SQL command to be executed."
                           name="SqlCommand"
-                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT BankaAd, DovizID, OrtalamaHesapYas, AktifHesapSayisi, ToplamBakiye FROM 
-(SELECT B.BolgeID, S.SehirAd, H.DovizID, BSI.BankaAd, 
-       AVG(DATEDIFF(YEAR, H.AcilmaTarihi, GETDATE())) AS OrtalamaHesapYas, 
-	   COUNT(H.HesapNo) AS AktifHesapSayisi, SUM(H.Meblag) AS ToplamBakiye
-FROM HESAP H
-INNER JOIN BANKA_SUBE BS
-ON H.SubeID = BS.SubeID
-INNER JOIN BANKA_SIRKET BSI
-ON BS.BankaID = BSI.BankaID
-INNER JOIN ILCE I
-ON I.IlceID = BS.IlceID
-INNER JOIN SEHIR S
-ON I.SehirID = S.SehirID
-INNER JOIN BOLGE B
-ON S.BolgeID = B.BolgeID
-WHERE H.DovizID NOT IN ('ALT','GPB') AND H.KapatmaTarihi IS NULL
-GROUP BY B.BolgeID, S.SehirAd, H.DovizID, BSI.BankaAd) OT
-WHERE BolgeID = ? AND SehirAd = ?</property>
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT BankaAd, DovizID, OrtalamaHesapYas, AktifHesapSayisi, ToplamBakiye 
+FROM (
+    SELECT B.BolgeID, S.SehirAd, H.DovizID, BSI.BankaAd, 
+           AVG(DATEDIFF(YEAR, H.AcilmaTarihi, GETDATE())) AS OrtalamaHesapYas, 
+           COUNT(H.HesapNo) AS AktifHesapSayisi, 
+           SUM(H.Meblag) AS ToplamBakiye
+    FROM HESAP H
+    INNER JOIN BANKA_SUBE BS ON H.SubeID = BS.SubeID
+    INNER JOIN BANKA_SIRKET BSI ON BS.BankaID = BSI.BankaID
+    INNER JOIN ILCE I ON I.IlceID = BS.IlceID
+    INNER JOIN SEHIR S ON I.SehirID = S.SehirID
+    INNER JOIN BOLGE B ON S.BolgeID = B.BolgeID
+    WHERE H.DovizID NOT IN ('ALT', 'GPB') 
+      AND H.KapatmaTarihi IS NULL
+    GROUP BY B.BolgeID, S.SehirAd, H.DovizID, BSI.BankaAd
+) OT
+WHERE BolgeID = ? AND SehirAd = ?;</property>
                         <property
                           dataType="System.String"
                           description="The variable that contains the SQL command to be executed."
@@ -1193,7 +1192,7 @@ WHERE BolgeID = ? AND SehirAd = ?</property>
                         <property
                           dataType="System.String"
                           description="The mappings between the parameters in the SQL command and variables."
-                          name="ParameterMapping">"BolgeID:Input",{479AC973-13A5-4636-985C-09D6006D3C4A};"SehirAd:Input",{A9581535-ECF1-4F48-B6F1-228F3161E3E0};</property>
+                          name="ParameterMapping">"BolgeID:Input",{16FB0602-40FE-4742-A8EB-5E325E70D777};"SehirAd:Input",{A9581535-ECF1-4F48-B6F1-228F3161E3E0};</property>
                       </properties>
                       <connections>
                         <connection
@@ -2674,8 +2673,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           <DTS:ForEachVariableMappings>
             <DTS:ForEachVariableMapping
               DTS:CreationName=""
-              DTS:DTSID="{4C5D7517-FDC1-4F13-B6D3-FFCE308DA50C}"
-              DTS:ObjectName="{4C5D7517-FDC1-4F13-B6D3-FFCE308DA50C}"
+              DTS:DTSID="{271F19E3-FFFA-4C3F-8CED-B9E766129E94}"
+              DTS:ObjectName="{271F19E3-FFFA-4C3F-8CED-B9E766129E94}"
               DTS:ValueIndex="0"
               DTS:VariableName="User::SehirAd" />
           </DTS:ForEachVariableMappings>
