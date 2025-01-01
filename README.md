@@ -61,4 +61,3 @@ For any questions or inquiries, please contact the repository owner:
 
 ---
 
-Feel free to modify this draft as needed and add specific details about your project.
